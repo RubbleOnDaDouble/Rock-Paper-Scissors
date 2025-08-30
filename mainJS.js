@@ -28,4 +28,11 @@ function compRandomChoice() {
     return compChoice;
 }
 
-console.log(compRandomChoice());
+//function to get human choice
+function getHumanChoice() {
+    let humanChoice = prompt("Pick your choice! (Rock-Paper-Scissors");
+    return humanChoice;
+}
+
+//console.log(compRandomChoice());
+console.log(getHumanChoice())
