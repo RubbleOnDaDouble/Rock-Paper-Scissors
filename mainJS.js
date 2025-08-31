@@ -81,7 +81,7 @@ function playRound(hChoice,cChoice) {
                     compScore++;
                     break;
             }
-        break;
+            break;
         case "scissors":
             //switch statement to compare comp choice to human choice
             switch (cChoice) {
@@ -97,7 +97,10 @@ function playRound(hChoice,cChoice) {
                     result = "It's a tie!"
                     break;
             }
-        break;
+            break;
+        default:
+            result = "Enter a valid choice between rock-paper-scissors";
+            break;
     }
 
     return console.log(result);
