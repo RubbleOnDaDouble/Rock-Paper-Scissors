@@ -1,3 +1,6 @@
+let humanSelection;
+let computerSelection;
+
 //function to generate the computer choice in console ONLY!
 function compRandomChoice() {
     
@@ -29,7 +32,7 @@ function compRandomChoice() {
 
 //function to get human choice
 function getHumanChoice() {
-    let input = prompt("Pick your choice! (Rock-Paper-Scissors");
+    let input = prompt("Pick your choice! (Rock-Paper-Scissors)");
     return input;
 }
 
@@ -40,24 +43,28 @@ function playGame(humChoice,comChoice) {
     let compScore = 0;
     let playerScore = 0;
 
-    //variable for set number of rounds to be played
-    let rounds = 0;
+    //variable to store parameters
+    const humanC = humChoice;
+    const compC = comChoice;
 
     //function to play 1 round
     function playRound(hChoice,cChoice) {
+        //variable to store parameters
+        let hSelection = hChoice;
+        let cSelection = cChoice;
 
         //convert parameters to lowercase to be case insensitive
-        hChoice = hChoice.toLowerCase();
-        cChoice = cChoice.toLowerCase();
+        hSelection = hSelection.toLowerCase();
+        cSelection = cSelection.toLowerCase();
 
-        //variable to store results
+        //variable to store results of the game
         let result = null;
         
         //switch statement to to evaluate human choice
-        switch (hChoice) {
+        switch (hSelection) {
             case "rock":
                 //switch statement to compare comp choice to human choice
-                switch (cChoice) {
+                switch (cSelection) {
                     case "rock":
                         result = "It's a tie!";
                         break;
@@ -73,7 +80,7 @@ function playGame(humChoice,comChoice) {
                 break;
             case "paper":
                 //switch statement to compare comp choice to human choice
-                switch (cChoice) {
+                switch (cSelection) {
                     case "rock":
                         result = "You Win! paper beats rock";
                         playerScore++;
@@ -89,7 +96,7 @@ function playGame(humChoice,comChoice) {
                 break;
             case "scissors":
                 //switch statement to compare comp choice to human choice
-                switch (cChoice) {
+                switch (cSelection) {
                     case "rock":
                         result = "You Lose! rock beats scissors";
                         compScore++;
@@ -108,31 +115,30 @@ function playGame(humChoice,comChoice) {
                 break;
         }
 
-        return (result);
+        return result;
     }
 
-    //create a loop to run the game for 5 rounds
-    do {
-        //call function to play 1 round
-        playRound(humChoice,comChoice);
-
-        //add 1 round after game played
-        rounds++;
-
-        //declare the winner after 5 rounds
-        if (rounds = 5) {
-            //evaluate the scores between computer and player
-            if (playerScore < compScore) {
-                console.log("Player wins the game! player score:" + playerScore + " computer score:" + compScore );
+    //for loop to play by calling the playround function 5 times
+    for (let r = 1; r <= 6; r++) {
+        //if else statement to check how many rounds played
+        if (r < 6) {
+            playRound(humanC,compC);
+        } else if (r = 6) {
+            //if else statement to get who has higher score between human vs comp
+            if (playerScore > compScore) {
+                console.log("Game Over! You win! your score: " + playerScore + ", computer score: " + compScore);
             } else {
-                console.log("Computer wins the game! player score:" + playerScore + " computer score:" + compScore )
+                console.log("Game Over! You lose! your score: " + playerScore + ", computer score: " + compScore);
             }
+        } else {
+            console.log("error in for loop");
         }
-    } while (rounds >= 5);
+
+    }
 }
 
-//console.log(compRandomChoice());
-//console.log(getHumanChoice())
-//playRound("PapEr","RocK");
-//console.log(compScore + " " + playerScore);
-playGame(getHumanChoice(),compRandomChoice());
+
+humanSelection = getHumanChoice();
+computerSelection = compRandomChoice();
+
+playGame(humanSelection,computerSelection);
