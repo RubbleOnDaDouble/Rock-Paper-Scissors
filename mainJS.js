@@ -49,13 +49,16 @@ function playGame(humChoice,comChoice) {
 
     //function to play 1 round
     function playRound(hChoice,cChoice) {
+        hChoice = getHumanChoice();
+        cChoice = compRandomChoice();
+
         //variable to store parameters
-        let hSelection = hChoice;
-        let cSelection = cChoice;
+        let hSelection = hChoice.toLowerCase();
+        let cSelection = cChoice.toLowerCase();
 
         //convert parameters to lowercase to be case insensitive
-        hSelection = hSelection.toLowerCase();
-        cSelection = cSelection.toLowerCase();
+        // hSelection = hSelection.toLowerCase();
+        // cSelection = cSelection.toLowerCase();
 
         //variable to store results of the game
         let result = null;
@@ -115,6 +118,7 @@ function playGame(humChoice,comChoice) {
                 break;
         }
 
+        console.log(result);
         return result;
     }
 
@@ -127,8 +131,12 @@ function playGame(humChoice,comChoice) {
             //if else statement to get who has higher score between human vs comp
             if (playerScore > compScore) {
                 console.log("Game Over! You win! your score: " + playerScore + ", computer score: " + compScore);
-            } else {
+            } else if (playerScore < compScore){
                 console.log("Game Over! You lose! your score: " + playerScore + ", computer score: " + compScore);
+            } else if (playerScore = compScore){
+                console.log("It's a tie! your score: " + playerScore + ", computer score: " + compScore);
+            } else {
+                console.log("error!");
             }
         } else {
             console.log("error in for loop");
@@ -137,8 +145,7 @@ function playGame(humChoice,comChoice) {
     }
 }
 
-
-humanSelection = getHumanChoice();
-computerSelection = compRandomChoice();
+// humanSelection = getHumanChoice();
+// computerSelection = compRandomChoice();
 
 playGame(humanSelection,computerSelection);
