@@ -56,10 +56,6 @@ function playGame(humChoice,comChoice) {
         let hSelection = hChoice.toLowerCase();
         let cSelection = cChoice.toLowerCase();
 
-        //convert parameters to lowercase to be case insensitive
-        // hSelection = hSelection.toLowerCase();
-        // cSelection = cSelection.toLowerCase();
-
         //variable to store results of the game
         let result = null;
         
@@ -144,8 +140,5 @@ function playGame(humChoice,comChoice) {
 
     }
 }
-
-// humanSelection = getHumanChoice();
-// computerSelection = compRandomChoice();
 
 playGame(humanSelection,computerSelection);
